@@ -179,7 +179,7 @@ const BottomFontStyleBlue = {
 
             {
                 (search.length > 1) &&
-                <div style={{ padding: '16px', display: 'flex', justifyContent: 'space-between' }} >
+                <div style={{ padding: '16px', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }} >
                     {
                         filteredProducts.map((product) => (
                             <Link to={`/item-detail/${product.id}`} style={{width: '30%', textDecoration: 'none', }} key={product.id}>
