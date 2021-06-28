@@ -42,11 +42,15 @@ export const ItemName = styled.span`
     color: #718596;
     font-weight: 600;
     margin-top: 5px;
+    width: 100%;
     
     @media ${device.mobileL} { 
         font-size: 10px;
         text-align: left;
-        margin-top: 5px;
+        max-height: 15px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
     
 
@@ -55,9 +59,11 @@ export const ItemName = styled.span`
 export const ItemPrice = styled.span`
     font-weight: 600;
     color: #000;
+    width: 100%;
 
     @media ${device.mobileL} { 
         font-size: 10px;
+        text-align: left;
     }
 
 `

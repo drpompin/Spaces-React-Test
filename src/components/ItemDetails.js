@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { addToCart } from '../actions/cartActions'
-import { useLocation } from "react-router-dom";
 import {FaLessThan} from "react-icons/fa"
 import {FaGreaterThan} from "react-icons/fa"
 import {FaShoppingCart} from "react-icons/fa"
@@ -27,10 +26,13 @@ import {
     ReviewIconContainer,
     BottomActionContainer,
     ActionButton,
+    NotificationWrapper,
+    NotificationText
 } from './styles/itemDetailStyles'
 
 import {
-    NavIconContainer
+    NavIconContainer,
+    CartNumber
 } from './styles/homeStyles'
 
 
@@ -41,12 +43,18 @@ const RateIconStyle = {
 
 
  const ItemDetail = (props) => {
-     
+
+    const [itemAdded, setItemAdded] = React.useState(false)
+
     const addItemToCart = (id) => {
-        props.addToCart(props.location.item.item.id); 
+        props.addToCart(id);
+        setItemAdded(!itemAdded)
     }
 
-    const itemDetail = useLocation().item.item || {}
+    const itemDetail = props.items.filter((item) => {
+        return (item.id === Number(props.match.params.id))
+    })[0]
+
 
     const cartItemNumber = props.cartNumber
     
@@ -58,7 +66,7 @@ const RateIconStyle = {
                 <NavIconContainer nonRounded
                     onClick={() => props.history.goBack()}
                 >
-                    <IconContext.Provider value={{ style: {fontSize: '12px'}}}>
+                    <IconContext.Provider value={{ style: {fontSize: '12px', cursor: 'pointer'}}}>
                         <div>
                             <FaLessThan />
                         </div>
@@ -82,10 +90,24 @@ const RateIconStyle = {
                                 <FaShoppingCart />
                             </Link>
                         </IconContext.Provider>
-                        <span style={{position: 'absolute', right: '0px', top: '-10px', fontSize: '12px', fontWeight: '600'}} >{cartItemNumber}</span>
+                            {
+                                cartItemNumber > 0 && 
+                                <CartNumber >{cartItemNumber}</CartNumber>
+                            }
                     </NavIconContainer>
                 </HeaderRightContainer>
             </ItemDetailHeader>
+
+            {   
+                itemAdded &&
+                <div style={{padding: '16px'}}>
+                    <NotificationWrapper>
+                        <NotificationText>Item added to cart successfully</NotificationText>
+                        <NotificationText boldAndBlack onClick={() => setItemAdded(false)}>x</NotificationText>
+                    </NotificationWrapper>
+                </div>
+                
+            }
 
             <DetailContainer>
                 <ItemDetailLeft>

@@ -1,47 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
 import Success from '../static/images/success.png'
 
-const CheckoutContainer = styled.div`
-    min-width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #227EFF;
-    padding: 20px;
-`
+import {
+    CheckoutContainer,
+    CheckOutImageContainer,
+    CheckOutImage,
+    ToHome,
+    SuccessMessage
+} from './styles/checkoutStyles'
 
-const CheckOutImageContainer = styled.div`
-    width: 100%;
-`
-
-const CheckOutImage = styled.img`
-    width: 40%;
-`
-
-const topDivv = styled.div`
-    width: 100%;
-`
-
-const ToHome = styled.button`
-    padding: 6px 20px;
-    color: #227EFF;
-    bottom: 20px;
-    background-color: #fff;
-    width: 100%;
-    border: none;
-    border-radius: 3px;
-`
-
-const SuccessMessage = styled.p`
-    width: 100%;
-    color: #fff;
-    margin-bottom: 0;
-    font-weight: 600;
-`
 
 const Checkout = () => {
     return (

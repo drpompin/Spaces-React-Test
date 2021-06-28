@@ -104,6 +104,25 @@ export const NavIconContainer = styled.span`
     }
 `
 
+export const CartNumber = styled.span`
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    font-size: 10px;
+    font-weight: 900;
+    color: white;
+    background-color: #EE6F44;
+    line-height: 1;
+    margin: 0;
+    width: 14px;
+    height: 14px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+`
+
 export const HorBar = styled.span`
     width: 1px;
     height: 20px;

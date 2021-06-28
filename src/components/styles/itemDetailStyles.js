@@ -39,6 +39,29 @@ export const HeaderText = styled.span`
 
 `
 
+export const NotificationWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #D3FDE9;
+    border: 1px solid #93ECC1;
+    border-radius: 3px;
+`
+
+export const NotificationText = styled.span`
+    color: #023B20;
+    font-size: 12px;
+    
+    ${props => props.boldAndBlack && css`
+        color: '#071827';
+        font-weight: 900;
+        font-size: 16px;
+        cursor: pointer;
+    `}
+`
+
 export const HeaderRightContainer = styled.div`
     display: flex;
     justify-content: flex-end;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -46,8 +46,15 @@ import {
     BottomItem, 
     BottomItemImage,
     BottomItemText,
-
+    CartNumber,
  } from './styles/homeStyles'
+
+ import { 
+    ItemPrice,
+    ItemWrapper,
+    ItemImage,
+    ItemName
+ } from './styles/itemStyles';
 
 
 
@@ -67,7 +74,6 @@ const BottomFontStyleBlue = {
 }
 
  const Home = (props) => {
-    console.log('props in home', props)
     
     const handleClick = (id)=>{
         props.addToCart(id); 
@@ -78,6 +84,24 @@ const BottomFontStyleBlue = {
             <Item handleClick={handleClick} key={item.id} item={item} />
         )
     })
+
+    const [search, setSearch] = useState("");
+
+    const handleLocationChange = (e) => {
+        e.preventDefault()
+        const searchToLower = e.target.value.toLowerCase()
+        setSearch(searchToLower)
+    }
+
+    const filteredProducts = props.items.filter((product) => {
+        return (
+            product.description.toLowerCase().includes(search) ||
+            product.product_name.toLowerCase().includes(search) ||
+            product.location.toLowerCase().includes(search)
+        ) 
+    });
+
+    const mappedLocation = props.items.filter((v,i,a)=>a.findIndex(t=>(t.location === v.location))===i)
 
     const cartItemNumber = props.cartNumber
 
@@ -95,11 +119,14 @@ const BottomFontStyleBlue = {
                         </IconContext.Provider>
                     </NavIconContainer>
 
-                    <NavSelect>
-                        <option>Lagos</option>
-                        <option>CalabarCalabar</option>
-                        <option>Kaduna</option>
-                        <option>Ibadan</option>
+                    <NavSelect  onChange={handleLocationChange} >
+                        {
+                            mappedLocation.map((locatn) => {
+                                return (
+                                    <option key={locatn.id} value={locatn.location}>{locatn.location}</option>
+                                )
+                            })
+                        }
                     </NavSelect>
                 </NavSector>
 
@@ -120,11 +147,14 @@ const BottomFontStyleBlue = {
 
                 <NavSector>
                     <Link to="/cart" style={{textDecoration: 'none', width: '100%', display: 'flex', color: '#000'}}>
-                        <NavIconContainer style={{position: 'relative'}}>
+                        <NavIconContainer style={{position: 'relative', marginRight: '10px'}}>
                             <IconContext.Provider value={{ style: {fontSize: '12px', color: "#2E4457"}}}>
                                     <FaShoppingCart />
                             </IconContext.Provider>
-                            <span style={{position: 'absolute', right: '0px', top: '-10px', fontSize: '12px', fontWeight: '600'}} >{cartItemNumber}</span>
+                            {
+                                cartItemNumber > 0 && 
+                                <CartNumber >{cartItemNumber}</CartNumber>
+                            }
                         </NavIconContainer>
                         <NavText>Cart</NavText>
                     </Link>
@@ -133,7 +163,11 @@ const BottomFontStyleBlue = {
 
 
             <SearchContainer>
-                <SearchInput placeholder="Search merchbuy" />
+                <SearchInput placeholder="Search merchbuy"  
+                    onChange={(e) => {
+                        setSearch(e.target.value.toLowerCase());
+                    }}
+                />
                 <SearchSpan>
                     <IconContext.Provider value={{ style: { fontSize: '24px' }}}>
                             <div>
@@ -142,6 +176,24 @@ const BottomFontStyleBlue = {
                         </IconContext.Provider>
                 </SearchSpan>
             </SearchContainer>
+
+            {
+                (search.length > 1) &&
+                <div style={{ padding: '16px', display: 'flex', justifyContent: 'space-between' }} >
+                    {
+                        filteredProducts.map((product) => (
+                            <Link to={`/item-detail/${product.id}`} style={{width: '30%', textDecoration: 'none', }} key={product.id}>
+                                <ItemWrapper  >
+                                    <ItemImage src={product.image} alt={product.title}></ItemImage>
+                                    <ItemName>{product.product_name}</ItemName>
+                                    <ItemPrice>N{product.range.split('-')[0]} - {product.range.split('-')[1]}</ItemPrice>
+                                </ItemWrapper>
+                            </Link>
+
+                        ))
+                    }
+                </div>
+            }
 
             <CarouselWrapper>
                 <Carousel

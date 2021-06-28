@@ -146,7 +146,7 @@ const Cart = (props) => {
                     <NavIconContainer nonRounded
                         onClick={() => props.history.goBack()}
                     >
-                        <IconContext.Provider value={{ style: {fontSize: '12px'}}}>
+                        <IconContext.Provider value={{ style: {fontSize: '12px', cursor: 'pointer'}}}>
                             <div>
                                 <FaLessThan />
                             </div>
@@ -183,12 +183,18 @@ const Cart = (props) => {
                     </Link>
                 </CartSummary>
 
-                <div style={{ padding: '16px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-                    {
-                        itemList
-                    }
-                </div>
-                
+                <>
+                    <div style={{width: '100%', display: 'flex', justifyContent: 'space-between', padding: '16px 16px 10px'}}>
+                        <ItemDetailName>Recently viewed</ItemDetailName>
+
+                        <ItemDetailName style={{ color: '#227EFF' }}>View all</ItemDetailName>
+                    </div>
+                    <div style={{ padding: '0 16px 16px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+                        {
+                            itemList
+                        }
+                    </div>
+                </>
             </>
        )
 }
@@ -198,8 +204,6 @@ const mapStateToProps = (state)=>{
     return{
         items: state.addedItems,
         total: state.total
-
-        //addedItems: state.addedItems
     }
 }
 const mapDispatchToProps = (dispatch)=>{
