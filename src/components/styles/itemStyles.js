@@ -24,8 +24,8 @@ export const device = {
 
 
 export const ItemMain = styled.div`
-    width: 30%;
     margin-bottom: 20px;
+
 `
 export const ItemWrapper = styled.div`
     display: flex;
@@ -43,6 +43,7 @@ export const ItemName = styled.span`
     font-weight: 600;
     margin-top: 5px;
     width: 100%;
+    text-align: left;
     
     @media ${device.mobileL} { 
         font-size: 10px;
@@ -60,6 +61,7 @@ export const ItemPrice = styled.span`
     font-weight: 600;
     color: #000;
     width: 100%;
+    text-align: left;
 
     @media ${device.mobileL} { 
         font-size: 10px;
@@ -71,6 +73,7 @@ export const ItemPrice = styled.span`
 export const ItemInStore = styled.span`
     color: #56636D;
     width: 100%;
+    text-align: left;
 
     @media ${device.mobileL} { 
         font-size: 10px;

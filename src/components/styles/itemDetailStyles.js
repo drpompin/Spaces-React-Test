@@ -221,10 +221,16 @@ export const BottomActionContainer = styled.div`
 
 export const ActionButton = styled.button`
     cursor: pointer;
-    padding: 6px 30px;
-    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 167px;
+    font-weight: 500;
     border: none;
     border-radius: 5px;
+    font-size: 14px;
+    line-height: 21px;
 
     ${props => props.blue && css`
         background-color: #227EFF;
@@ -243,6 +249,5 @@ export const ActionButton = styled.button`
     `}
 
     @media ${device.tablet} { 
-        font-size: 10px;
     }
 `

@@ -179,7 +179,7 @@ const Cart = (props) => {
                         to="/checkout"
                         style={{width: '100%', textDecoration: 'none'}}
                     >
-                        <ActionButton fullWidth blue style={{fontSize: '12px'}}>Checkout</ActionButton>
+                        <ActionButton fullWidth blue >Checkout</ActionButton>
                     </Link>
                 </CartSummary>
 

@@ -28,8 +28,6 @@ export const HeaderContainer = styled.div `
     width: 100%;
     justify-content: space-between;
     padding: 16px;
-    font-weight: 600;
-    /* margin-bottom: 20px; */
 `;
 
 
@@ -45,25 +43,22 @@ export const HomeNav = styled.div`
 
 export const NavSector = styled.div`
     display: flex;
-    /* width: 31%; */
     justify-content: center;
+    align-items: center;
 
     @media ${device.tablet} { 
-        font-size: 10px;
         justify-content: center;
         align-items: center;
     }
 `
 
 export const NavSelect = styled.select`
-    font-size: 16px;
     border: none;
     display: flex;
 
     @media ${device.tablet} { 
         font-size: 12px;
         height: fit-content;
-        font-weight: 500;
         max-width: 64px;
     }
 `
@@ -74,7 +69,6 @@ export const NavText = styled.span`
     @media ${device.tablet} { 
         font-size: 12px;
         height: fit-content;
-        font-weight: 500;
     }
 `
     
@@ -152,11 +146,10 @@ export const SearchInput = styled.input `
 export const SearchSpan = styled.span `
     position: absolute;
     right: 30px;
-    top: calc(40px - 32px);
+    top: calc(40px - 30px);
 `
 
 export const CarouselWrapper =  styled.div`
-    // display: 'flex',
     margin: 20px 0;
 `
 
@@ -240,9 +233,11 @@ export const CategoriesColumn = styled.div`
 
 export const CategoriesContainer = styled.span`
     width: 100%;
-    padding: 20px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 3px;
-    line-height: 1;
     margin-bottom: 10px;
 
 
@@ -263,18 +258,20 @@ export const CategoriesContainer = styled.span`
     `}
 
     @media ${device.mobileL} { 
-        padding: 10px;
+        width: 48px;
+        height: 48px;
     }
 `
 
 export const CategoriesText = styled.span`
     @media ${device.mobileL} { 
-        font-size: 12px;
+        font-size: 10px;
     }
 `
 
 export const ProductSection = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
     justify-content: space-between;
     flex-wrap: wrap;
     max-height: 400px;
@@ -299,7 +296,6 @@ export const BottomItem = styled.span`
 `
 
 export const BottomItemImage = styled.span`
-    /* width: 100%; */
     ${props => props.blue && css`
         color: #227EFF;
     `}

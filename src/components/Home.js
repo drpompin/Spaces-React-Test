@@ -8,16 +8,21 @@ import Item from './Item';
 import {FaMapMarkerAlt} from "react-icons/fa"
 import {FaClipboardList} from "react-icons/fa"
 import {FaShoppingCart} from "react-icons/fa"
-import {FaFire} from "react-icons/fa"
-import {FaNewspaper} from "react-icons/fa"
-import {FaRegThumbsUp} from "react-icons/fa"
-import {FaStore} from "react-icons/fa"
+// import {FaFire} from "react-icons/fa"
+// import {FaNewspaper} from "react-icons/fa"
+// import {FaRegThumbsUp} from "react-icons/fa"
+// import {FaStore} from "react-icons/fa"
 import {FaSearch} from "react-icons/fa"
 import {IconContext} from "react-icons"
 import {FaHome} from "react-icons/fa"
 import {FaCrutch} from "react-icons/fa"
 import {FaWallet} from "react-icons/fa"
 import {FaListUl} from "react-icons/fa"
+import ListVC from '../static/images/list-vector.png'
+import FireVC from '../static/images/fire-vector.png'
+import ShopVC from '../static/images/shops.png'
+import ThumbVc from '../static/images/thumb.png'
+import WristVC from '../static/images/wrist.png'
 
 
 
@@ -55,13 +60,6 @@ import {
     ItemImage,
     ItemName
  } from './styles/itemStyles';
-
-
-
-const CategoryFontStyle = {
-    fontSize: '24px',
-    color: '#fff',
-}
 
 const BottomFontStyle = {
     fontSize: '20px',
@@ -146,8 +144,8 @@ const BottomFontStyleBlue = {
                 <HorBar />
 
                 <NavSector>
-                    <Link to="/cart" style={{textDecoration: 'none', width: '100%', display: 'flex', color: '#000'}}>
-                        <NavIconContainer style={{position: 'relative', marginRight: '10px'}}>
+                    <Link to="/cart" style={{textDecoration: 'none', width: '100%', display: 'flex', lineHeight: '1', alignItems: 'center', color: '#000'}}>
+                        <NavIconContainer style={{position: 'relative', marginRight: '5px'}}>
                             <IconContext.Provider value={{ style: {fontSize: '12px', color: "#2E4457"}}}>
                                     <FaShoppingCart />
                             </IconContext.Provider>
@@ -169,21 +167,21 @@ const BottomFontStyleBlue = {
                     }}
                 />
                 <SearchSpan>
-                    <IconContext.Provider value={{ style: { fontSize: '24px' }}}>
+                    <IconContext.Provider value={{ }}>
                             <div>
                                 <FaSearch />
                             </div>
-                        </IconContext.Provider>
+                    </IconContext.Provider>
                 </SearchSpan>
             </SearchContainer>
 
             {
                 (search.length > 1) &&
-                <div style={{ padding: '16px', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }} >
+                <div style={{ padding: '16px', display: 'grid', gridTemplateColumns: '30% 30% 30%', justifyContent: 'space-between', flexWrap: 'wrap' }} >
                     {
                         filteredProducts.map((product) => (
-                            <Link to={`/item-detail/${product.id}`} style={{width: '30%', textDecoration: 'none', }} key={product.id}>
-                                <ItemWrapper  >
+                            <Link to={`/item-detail/${product.id}`} style={{ textDecoration: 'none' }} key={product.id}>
+                                <ItemWrapper>
                                     <ItemImage src={product.image} alt={product.title}></ItemImage>
                                     <ItemName>{product.product_name}</ItemName>
                                     <ItemPrice>N{product.range.split('-')[0]} - {product.range.split('-')[1]}</ItemPrice>
@@ -225,44 +223,36 @@ const BottomFontStyleBlue = {
             <CategoriesRow>
                 <CategoriesColumn>
                     <CategoriesContainer blue>
-                        <IconContext.Provider value={{ style: CategoryFontStyle}}>
-                            <div>
-                                <FaNewspaper />
-                            </div>
-                        </IconContext.Provider>
+                        <img src={ListVC} alt="vc-img" style={{ width: '18px', height: '20px' }} />
                     </CategoriesContainer>
                     <CategoriesText>Product Categories</CategoriesText>
                 </CategoriesColumn>
 
                 <CategoriesColumn>
                     <CategoriesContainer orange>
-                        <IconContext.Provider value={{ style: CategoryFontStyle}}>
-                            <div>
-                                <FaFire />
-                            </div>
-                        </IconContext.Provider>
+                        <img src={FireVC} alt="vc-img" style={{ width: '18px', height: '20px' }} />
                     </CategoriesContainer>
                     <CategoriesText>Popular Products</CategoriesText>
                 </CategoriesColumn>
 
                 <CategoriesColumn>
                     <CategoriesContainer purple>
-                        <IconContext.Provider value={{ style: CategoryFontStyle}}>
-                            <div>
-                                <FaRegThumbsUp />
-                            </div>
-                        </IconContext.Provider>
+                        <div style={{display: 'flex', alignItems: 'baseline'}}>
+                            <img src={WristVC} alt="vc-img" style={{ color: '#fff', width: '5.2px', height: '9.6px' }} />
+                            <img src={ThumbVc} alt="vc-img" style={{ color: '#fff', width: '14px', height: '19.2px' }} />
+                        </div>
                     </CategoriesContainer>
                     <CategoriesText>Recommended Products</CategoriesText>
                 </CategoriesColumn>
 
                 <CategoriesColumn>
                     <CategoriesContainer green>
-                        <IconContext.Provider value={{ style: CategoryFontStyle}}>
+                        {/* <IconContext.Provider value={{ style: CategoryFontStyle}}>
                             <div>
                                 <FaStore />
                             </div>
-                        </IconContext.Provider>
+                        </IconContext.Provider> */}
+                        <img src={ShopVC} alt="vc-img" style={{ width: '18px', height: '20px' }} />
                     </CategoriesContainer>
                     <CategoriesText>Shops</CategoriesText>
                 </CategoriesColumn>

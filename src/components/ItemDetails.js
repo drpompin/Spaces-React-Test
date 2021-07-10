@@ -203,7 +203,7 @@ const RateIconStyle = {
             </DetailContainer>
 
             <BottomActionContainer>
-                <ActionButton onClick={() => {addItemToCart(itemDetail.id)}} blue>Add To Cart</ActionButton>
+                <ActionButton style={{marginRight: '10px'}} onClick={() => {addItemToCart(itemDetail.id)}} blue>Add To Cart</ActionButton>
 
                 <ActionButton plain>Wishlist</ActionButton>
             </BottomActionContainer>
