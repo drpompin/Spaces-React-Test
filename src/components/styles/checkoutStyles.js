@@ -19,7 +19,7 @@ export const CheckOutImage = styled.img`
     width: 40%;
 `
 
-export const topDivv = styled.div`
+export const TopDivv = styled.div`
     width: 100%;
 `
 

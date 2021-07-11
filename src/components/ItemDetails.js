@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { addToCart } from '../actions/cartActions'
+import { addToCart } from '../redux/actions/cartActions'
 import {FaLessThan} from "react-icons/fa"
 import {FaGreaterThan} from "react-icons/fa"
 import {FaShoppingCart} from "react-icons/fa"

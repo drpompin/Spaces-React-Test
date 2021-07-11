@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removeItem,addQuantity,subtractQuantity} from '../actions/cartActions'
+import { removeItem,addQuantity,subtractQuantity} from '../redux/actions/cartActions'
 import {IconContext} from "react-icons"
 import {FaTrash} from "react-icons/fa"
 import {FaLessThan} from "react-icons/fa"
@@ -189,7 +189,7 @@ const Cart = (props) => {
 
                         <ItemDetailName style={{ color: '#227EFF' }}>View all</ItemDetailName>
                     </div>
-                    <div style={{ padding: '0 16px 16px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+                    <div style={{ padding: '0 16px 16px', display: 'grid', gridTemplateColumns: '30% 30% 30%', justifyContent: 'space-between' }}>
                         {
                             itemList
                         }

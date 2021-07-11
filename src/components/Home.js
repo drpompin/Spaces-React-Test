@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import { addToCart } from '../actions/cartActions';
+import { addToCart } from '../redux/actions/cartActions';
 import Item from './Item';
 import {FaMapMarkerAlt} from "react-icons/fa"
 import {FaClipboardList} from "react-icons/fa"

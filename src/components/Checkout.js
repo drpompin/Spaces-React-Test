@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { clearCart } from '../redux/actions/cartActions'
+
 import Success from '../static/images/success.png'
 
 import {
@@ -7,14 +10,21 @@ import {
     CheckOutImageContainer,
     CheckOutImage,
     ToHome,
-    SuccessMessage
+    SuccessMessage,
+    TopDivv
 } from './styles/checkoutStyles'
 
 
-const Checkout = () => {
+const Checkout = (props) => {
+
+    // To clear the entire cart
+    const handleClearCart = () => {
+        props.clearCart();
+    }
+
     return (
         <CheckoutContainer>
-            <topDivv></topDivv>
+            <TopDivv></TopDivv>
             <CheckOutImageContainer>
                 <CheckOutImage src={Success} alt="checkout-img" />
                 <SuccessMessage>Checkout Successful</SuccessMessage>
@@ -24,11 +34,25 @@ const Checkout = () => {
                 <Link
                     to="/"
                     style={{textDecoration: 'none', width: '100%'}}
+                    onClick={ () => {handleClearCart()} }
                 >
-                    <ToHome>Got it!</ToHome>
+                    <ToHome >Got it!</ToHome>
                 </Link>
         </CheckoutContainer>
     )
 }
 
-export default Checkout
+
+const mapStateToProps = (state) => {
+    return{
+        items: state.addedItems,
+        total: state.total
+    }
+}
+
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        clearCart: () => { dispatch(clearCart()) },
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Checkout)

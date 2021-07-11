@@ -273,7 +273,6 @@ export const ProductSection = styled.div`
     display: grid;
     grid-template-columns: 30% 30% 30%;
     justify-content: space-between;
-    flex-wrap: wrap;
     max-height: 400px;
     overflow-y: scroll;
     padding: 16px;

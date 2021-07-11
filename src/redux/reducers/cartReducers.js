@@ -1,10 +1,10 @@
-import { ADD_TO_CART, REMOVE_ITEM, SUB_QUANTITY, ADD_QUANTITY } from '../actions/action-types/cartActionTypes'
-import { products } from '../static/products'
+import { ADD_TO_CART, REMOVE_ITEM, SUB_QUANTITY, ADD_QUANTITY, CLEAR_CART } from '../actions/action-types/cartActionTypes'
+import { products } from '../../static/products'
 
 
 const initialState = {
     items: products,
-    addedItems:[],
+    addedItems: [],
     total: 0
 }
 
@@ -49,6 +49,13 @@ const cartReducer = (state = initialState, action) => {
                 addedItems: new_items,
                 total: newTotal
             }
+
+        case CLEAR_CART:
+            return {
+                ...state,
+                addedItems: [],
+                total: 0
+            }
         
         case ADD_QUANTITY:
             let addQtyAddedItem = state.items.find(item=> item.id === action.id)
@@ -62,15 +69,16 @@ const cartReducer = (state = initialState, action) => {
 
         case SUB_QUANTITY:
             let subQtyAddedItem = state.items.find(item=> item.id === action.id) 
-            //if the qt == 0 then it should be removed
+            
+            //if the qt === 1, it should not be removed
             if(subQtyAddedItem.quantity === 1){
-                let new_items = state.addedItems.filter(item=>item.id !== action.id)
-                let newTotal = state.total - subQtyAddedItem.price
+                // let new_items = state.addedItems.filter(item=>item.id !== action.id)
+                // let newTotal = state.total - subQtyAddedItem.price
                 
                 return {
                     ...state,
-                    addedItems: new_items,
-                    total: newTotal
+                    // addedItems: new_items,
+                    // total: newTotal
                 }
             }
             else {
