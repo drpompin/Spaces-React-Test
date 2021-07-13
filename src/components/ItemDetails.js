@@ -51,9 +51,11 @@ const RateIconStyle = {
         setItemAdded(!itemAdded)
     }
 
-    const itemDetail = props.items.filter((item) => {
-        return (item.id === Number(props.match.params.id))
-    })[0]
+    // const itemDetail = props.items.filter((item) => {
+    //     return (item.id === Number(props.match.params.id))
+    // })[0]
+
+    const itemDetail = props.items.find(item => item.id === Number(props.match.params.id))
 
 
     const cartItemNumber = props.cartNumber
@@ -100,7 +102,7 @@ const RateIconStyle = {
 
             {   
                 itemAdded &&
-                <div style={{padding: '16px'}}>
+                <div style={{padding: '0 16px 10px'}}>
                     <NotificationWrapper>
                         <NotificationText>Item added to cart successfully</NotificationText>
                         <NotificationText boldAndBlack onClick={() => setItemAdded(false)}>x</NotificationText>

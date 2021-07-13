@@ -28,7 +28,7 @@ export const ItemDetailHeader = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 16px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 `
 
 export const HeaderNavBack = styled.span`
@@ -87,6 +87,7 @@ export const ItemDetailLeft = styled.div`
 
     @media ${device.mobileL} { 
         width: 100%;
+        height: 250px;
     }
 `
 
