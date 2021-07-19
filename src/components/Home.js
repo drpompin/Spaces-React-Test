@@ -100,8 +100,9 @@ const BottomFontStyleBlue = {
     });
 
     const mappedLocation = props.items.filter((v,i,a)=>a.findIndex(t=>(t.location === v.location))===i)
-
-    const cartItemNumber = props.cartNumber
+    
+    let cartItemNumber = props.cartNumber.reduce((accum, item) => accum + item.quantity, 0)
+    console.log('totalChild===', cartItemNumber)
 
     return(
         <div className="container">
@@ -327,7 +328,8 @@ const BottomFontStyleBlue = {
 const mapStateToProps = (state)=>{
     return {
       items: state.items,
-      cartNumber: state.addedItems.length
+    //   cartNumber: state.addedItems.length,
+      cartNumber: state.addedItems
     }
   }
 const mapDispatchToProps= (dispatch)=>{

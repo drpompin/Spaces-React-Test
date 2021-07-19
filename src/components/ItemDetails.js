@@ -48,7 +48,7 @@ const RateIconStyle = {
 
     const addItemToCart = (id) => {
         props.addToCart(id);
-        setItemAdded(!itemAdded)
+        setItemAdded(true)
     }
 
     // const itemDetail = props.items.filter((item) => {
@@ -57,9 +57,7 @@ const RateIconStyle = {
 
     const itemDetail = props.items.find(item => item.id === Number(props.match.params.id))
 
-
-    const cartItemNumber = props.cartNumber
-    
+    let cartItemNumber = props.cartNumber.reduce((accum, item) => accum + item.quantity, 0)    
     
 
     return (
@@ -218,7 +216,7 @@ const RateIconStyle = {
  const mapStateToProps = (state) => {
     return {
       items: state.items,
-      cartNumber: state.addedItems.length
+      cartNumber: state.addedItems,
     }
 }
 

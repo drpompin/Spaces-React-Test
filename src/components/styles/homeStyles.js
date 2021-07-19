@@ -273,16 +273,20 @@ export const ProductSection = styled.div`
     display: grid;
     grid-template-columns: 30% 30% 30%;
     justify-content: space-between;
-    max-height: 400px;
-    overflow-y: scroll;
+    /* max-height: 400px; */
+    /* overflow-y: scroll; */
     padding: 16px;
 `
 
 export const BottomNav = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 16px;
+    display: none;
+
+    @media ${device.tablet} { 
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px;
+    }
 `
 
 export const BottomItem = styled.span`
